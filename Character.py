@@ -10,7 +10,7 @@ class Character:
         self.y_position = y_position
 
 """
-Create  class McGyver those down-class Character with special character=m
+Create  class McGyver those are a children-class Character with special character = m
 """
 
 
@@ -44,7 +44,7 @@ class McGyver(Character):
             return x_position, y_position
 
 """
-Create  class Guard those down-class Character with special character=g
+Create  class Guard those are a children-class Character with special character = g
 """
 
 
@@ -54,5 +54,4 @@ class Guard(Character):
         self.character = "g"
         self.x_position = x_position
         self.y_position = y_position
-
 
