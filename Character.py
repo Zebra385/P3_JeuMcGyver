@@ -15,11 +15,9 @@ Create  class McGyver those are a children-class Character with special characte
 
 
 class McGyver(Character):
-    def __init__(self, character, x_position, y_position):
-        Character.__init__(self, character, x_position,y_position)
-        self.character= "m"
-        self.x_position = x_position
-        self.y_position = y_position
+    def __init__(self, x_position, y_position):
+        Character.__init__(self, "m", x_position,y_position)
+
 
     """
     Method move to move m like My Gyver with keyboard
@@ -49,9 +47,7 @@ Create  class Guard those are a children-class Character with special character 
 
 
 class Guard(Character):
-    def __init__(self, character, x_position, y_position,):
-        Character.__init__(self, character, x_position, y_position)
-        self.character = "g"
-        self.x_position = x_position
-        self.y_position = y_position
+    def __init__(self, x_position, y_position,):
+        Character.__init__(self, "g", x_position, y_position)
+
 

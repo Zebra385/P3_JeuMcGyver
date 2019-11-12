@@ -17,8 +17,12 @@ class Map:
                 self.map_structure.append(list(line)) #  Add list line in list  map_structure
             f.close()
      #A revoir ne fonctionne plus
-    #def __str__(self):  # We change the "print", to can write the map like a array
-     #   return "\n".join(self.map_structure)
+    def __str__(self):  # We change the "print", to can write the map like a array
+        map_str = ""
+        for line in self.map_structure:
+            map_str += "".join(line)
+            map_str += "\n"
+        return map_str
 
     def trouve_un_character(self, character):  # determinate the position to a character m to My Gyver and g to  Guard
         self.character = str(character)
@@ -31,3 +35,12 @@ class Map:
                     y_character = int(j)
         return (x_character, y_character)  #return the position of the character
 
+    def find_all_characters(self, character):
+        positions = []
+        for x, line in enumerate(self.map_structure):# enumerate renvoie 2 variable 1=x: l'index et le 2=line le contenu
+            for y, c in enumerate(line):
+                if character == c:
+                    positions.append((x, y))
+        return positions
+    def write_character(self, character, x, y):
+        self.map_structure[x][y] = character
