@@ -1,6 +1,5 @@
 #coding: utf-8 #encodage in French
-import numpy as np
-import Map as map_game
+
 from GameManager import GameManager
 
 """" This program is to star The Game Mac Gyver
