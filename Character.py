@@ -24,23 +24,21 @@ class McGyver(Character):
     z to up, s:  down, q : left and  d : right
     """
 
-    def move(self, x_position, y_position):
-        self.x_position= x_position
-        self.y_position = y_position
-        keyboard = input("Tell me how you want  move Mc Gyver; the key z to up, s:  down, q : left and  d : right ")
-        if keyboard =='z':  # if key 'z' is pressed
-            x_position -= 1
-            return x_position, y_position
-        elif keyboard == 's':
-            x_position += 1
-            return x_position, y_position
-        if keyboard == 'q':
-            y_position -= 1
-            return x_position, y_position
-        elif keyboard == 'd':
-            y_position += 1
-            return x_position, y_position
 
+    def move(self ):
+            keyboard = input("Tell me how you want  move Mc Gyver; the key z to up, s:  down, q : left and  d : right ")
+            if keyboard =='z':  # if key 'z' is pressed
+                self.x_position -= 1
+                return self.x_position, self.y_position
+            elif keyboard == 's':
+                self.x_position += 1
+                return self.x_position, self.y_position
+            if keyboard == 'q':
+                self.y_position -= 1
+                return self.x_position, self.y_position
+            elif keyboard == 'd':
+                self.y_position += 1
+                return self.x_position, self.y_position
 """
 Create  class Guard those are a children-class Character with special character = g
 """

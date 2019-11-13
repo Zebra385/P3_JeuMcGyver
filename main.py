@@ -1,4 +1,4 @@
-# coding: utf-8 # encodage in French
+
 
 from GameManager import GameManager
 

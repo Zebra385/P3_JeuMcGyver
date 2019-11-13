@@ -15,32 +15,43 @@ class Map:
                 #line = line.split(line)
                 line = line.strip()  # strip
                 self.map_structure.append(list(line)) #  Add list line in list  map_structure
-            f.close()
-     #A revoir ne fonctionne plus
-    def __str__(self):  # We change the "print", to can write the map like a array
-        map_str = ""
-        for line in self.map_structure:
-            map_str += "".join(line)
-            map_str += "\n"
-        return map_str
 
-    def trouve_un_character(self, character):  # determinate the position to a character m to My Gyver and g to  Guard
-        self.character = str(character)
+    # We change the "print", to can write the map like a array
+    def __str__(self):
+        map_str = ""# on définit notre tableau que l'on veut ecrire
+        for line in self.map_structure: #pour chaque lingne dans map_structure
+            map_str += "".join(line)#on ajoute la nouvelle ligne au tableau
+            map_str += "\n"#on ajoute un renvoi à la ligne après chaque ligne
+        return map_str#quand on fera un print(map) on affichera correctement notre tableau
+
+    # Def find_one_character to determinate the position of a character
+    def find_one_character(self, character):
         x_character = int()
         y_character = int()
-        for i in range(0,14):
-            for j in range(0,14):
-                if self.map_structure[i][j] == character:
-                    x_character = int(i)
-                    y_character = int(j)
-        return (x_character, y_character)  #return the position of the character
-
-    def find_all_characters(self, character):
+        for x, line in enumerate(self.map_structure):
+            for y, c in enumerate(line):
+                if character == c:
+                    x_character = int(x)
+                    y_character = int(y)
+        return (x_character, y_character)  # return the position of this character
+    """
+    Definition d'un attribut qui trouve la position du même character et qui le met  dans une liste
+    """
+    def find_all_characters(self, character):# liste de position x,y du meme caracter
         positions = []
-        for x, line in enumerate(self.map_structure):# enumerate renvoie 2 variable 1=x: l'index et le 2=line le contenu
+        for x, line in enumerate(self.map_structure): # enumerate return 2 variables the first "x" is the index  and the second "line" is the value
             for y, c in enumerate(line):
                 if character == c:
                     positions.append((x, y))
         return positions
+    """ 
+    We def a attribut to write a character to the position line x and column y.
+    """
     def write_character(self, character, x, y):
         self.map_structure[x][y] = character
+    """
+    We def an attribut whose return the character in  position line x and column y.
+    """
+    def retrieve_character(self, x, y):
+        character = self.map_structure[x][y]
+        return character
