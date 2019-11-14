@@ -38,33 +38,33 @@ class GameManager:
 
     def start(self):
         print(self.map)
-        conter_objet = 0
         # End of game while position of character "m" different position of character "g"
         while (self.mcgyver.x_position, self.mcgyver.y_position) != (self.guard.x_position, self.guard.y_position):
             #  Window map
             print(self.map)
             self.map.write_character(" ", self.mcgyver.x_position, self.mcgyver.y_position)
-            x_position, y_position = self.mcgyver.x_position, self.mcgyver.y_position
+            #x_position, y_position = self.mcgyver.x_position, self.mcgyver.y_position
+            x_position, y_position = self.mcgyver.position()
             x_position_moving, y_position_moving = self.mcgyver.move()
             # Test to know, is it a good move?
-            if  self.map.retrieve_character(x_position_moving, y_position_moving) != "x" :
+            if self.map.retrieve_character(x_position_moving, y_position_moving) != "x":
                 for item in self.items:
                     if self.map.retrieve_character(x_position_moving, y_position_moving) == item.character:
-                        conter_objet +=1
-                self.mcgyver.x_position, self.mcgyver.y_position = x_position_moving, y_position_moving
+                        self.mcgyver.inventury.append(item.name)
+                self.mcgyver.set_position(x_position_moving, y_position_moving)
                 self.map.write_character("m", self.mcgyver.x_position, self.mcgyver.y_position)
 
 
             else:
                 print(" No, You can't go here")
-                self.mcgyver.x_position, self.mcgyver.y_position = x_position, y_position
+                self.mcgyver.set_position( x_position, y_position)
                 self.map.write_character("m", self.mcgyver.x_position, self.mcgyver.y_position)
 
         # Condition to WIN or LOSE
-        if conter_objet == 3 :
+        if len(self.mcgyver.inventury) == 3 :
             self.map.write_character("m", self.mcgyver.x_position, self.mcgyver.y_position)
             print(self.map)
             print("YOU ARE A WINNER---YOU ARE A WINNER---YOU ARE A WINNER---YOU ARE A WINNER---YOU ARE A WINNER---")
         else:
             print("Sorry but you haven't the three object: YOU LOSE---YOU LOSE---YOU LOSE---YOU LOSE---YOU LOSE---")
-            print("It fail ", int(3-conter_objet), " objet(s)")
+            print("It fail ", int(3 -len(self.mcgyver.inventury)), " objet(s)")

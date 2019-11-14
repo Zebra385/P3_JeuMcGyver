@@ -17,6 +17,7 @@ Create  class McGyver those are a children-class Character with special characte
 class McGyver(Character):
     def __init__(self, x_position, y_position):
         Character.__init__(self, "m", x_position,y_position)
+        self.inventury = [] # A list to stock the object (item) that Mc Gyver take
 
 
     """
@@ -39,6 +40,21 @@ class McGyver(Character):
             elif keyboard == 'd':
                 self.y_position += 1
                 return self.x_position, self.y_position
+            else:# if an other key : make nothing and  write a message
+                print("!!!!!!!!!!!!!!!!------------------This key of keyboard is forbiden----------------!!!!!!!!!!!!!")
+                return self.x_position, self.y_position
+    """
+    Methode to know the position
+    """
+    def position(self):
+        return self.x_position, self.y_position
+    """
+    Method to set position
+    """
+    def set_position(self,x,y):
+        self.x_position = x
+        self.y_position = y
+
 """
 Create  class Guard those are a children-class Character with special character = g
 """
